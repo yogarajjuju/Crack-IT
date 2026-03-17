@@ -15,9 +15,9 @@ class BankAccount{
         System.out.println("The new balance " + balance);
     }
 
-    void withdraw (int amount){
+    void withdraw (int amount)throws Exception{
         if(amount>balance){
-            System.out.println("Insufficent amount");
+            throw new Exception("Insufficent balance in your account");
         } else{
             balance-=amount;
             System.out.println("The new avaiable balance is "+ balance);
@@ -31,10 +31,19 @@ class BankAccount{
         // acc.deposit(2000);
         // acc.checkbalance();
         // acc.withdraw(500);
-        BankAccount account = new BankAccount("juju", 500);
+         BankAccount account = new BankAccount("juju", 500);
         account.checkbalance();
         account.deposit(2000);
-        account.withdraw(1000);
+        
+
+        try{
+            account.withdraw(10000);
+
+        } catch(Exception e){
+            System.out.println("Error:"+ e.getMessage());
+        }
+        
+       
         account.checkbalance();
     }
 }
