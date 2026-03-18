@@ -5,6 +5,9 @@ class BankAccount{
     this.name =name;
     this.balance=balance;
    }
+   int getbalance(){
+        return balance;
+    }
     
     void checkbalance(){
         System.out.println("Balance "+balance);
@@ -34,6 +37,8 @@ class BankAccount{
          BankAccount account = new BankAccount("juju", 500);
         account.checkbalance();
         account.deposit(2000);
+        SavingsAccount sa = new SavingsAccount("Yogaraj", 5000);
+sa.addInterest(10);
         
 
         try{
