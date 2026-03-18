@@ -8,6 +8,9 @@ class BankAccount{
    int getbalance(){
         return balance;
     }
+    void setBalance(int balance){
+    this.balance = balance;
+}
     
     void checkbalance(){
         System.out.println("Balance "+balance);
@@ -26,29 +29,34 @@ class BankAccount{
             System.out.println("The new avaiable balance is "+ balance);
         }
     }
-    public static void main(String args[]){
-        // BankAccount acc = new BankAccount();
-        // acc.name = "Om";
-        // acc.balance=500;
-        // acc.checkbalance();
-        // acc.deposit(2000);
-        // acc.checkbalance();
-        // acc.withdraw(500);
-         BankAccount account = new BankAccount("juju", 500);
-        account.checkbalance();
-        account.deposit(2000);
-        SavingsAccount sa = new SavingsAccount("Yogaraj", 5000);
-sa.addInterest(10);
-        
-
-        try{
-            account.withdraw(10000);
-
-        } catch(Exception e){
-            System.out.println("Error:"+ e.getMessage());
-        }
-        
-       
-        account.checkbalance();
+   public static void main(String args[]){
+    BankAccount account = new BankAccount("juju", 500);
+    account.checkbalance();
+    account.deposit(2000);
+    
+    SavingsAccount sa = new SavingsAccount("Yogaraj", 5000);
+    sa.addInterest(10);
+    
+    CurrentAccount ca = new CurrentAccount("Yogaraj", 1000, 500);
+    
+    try {
+        ca.withdraw(1400);
+    } catch(Exception e){
+        System.out.println("Error: " + e.getMessage());
     }
+    
+    try {
+        ca.withdraw(1600);
+    } catch(Exception e){
+        System.out.println("Error: " + e.getMessage());
+    }
+
+    try{
+        account.withdraw(10000);
+    } catch(Exception e){
+        System.out.println("Error: " + e.getMessage());
+    }
+    
+    account.checkbalance();
+}
 }
